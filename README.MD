@@ -24,8 +24,6 @@ After cloning the repository run:
 
 # Endpoints: 
 
-### Docs Web Version http://localhost:8080/docs
-
 ### /api/clients/{clientId}/accounts
 [Controller](src/Controller/ClientAccountsController.php)
 
