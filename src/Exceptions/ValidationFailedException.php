@@ -1,0 +1,24 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Exceptions;
+
+use RuntimeException;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\WithHttpStatus;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
+
+#[WithHttpStatus(statusCode: Response::HTTP_UNPROCESSABLE_ENTITY)]
+class ValidationFailedException extends RuntimeException
+{
+    public function __construct(private ConstraintViolationListInterface $violations)
+    {
+        parent::__construct(message: 'Parameters validation failed.');
+    }
+
+    public function getViolations(): ConstraintViolationListInterface
+    {
+        return $this->violations;
+    }
+}
